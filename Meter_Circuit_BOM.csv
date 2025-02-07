@@ -1,0 +1,24 @@
+Reference,Value,Datasheet,Footprint,Qty,Description,Manufacturer,Manufacturer Part #,LCSC Part#
+C1,220u/25V,~,Capacitor_THT:C_Radial_D6.3mm_H11.0mm_P2.50mm,1,Polarized Cap,Honor Elec,RVT1E221M0810,C3353
+C2,22u/25vac0805,~,Capacitor_SMD:C_1206_3216Metric,1,Unpolarized Cap,Samsung Electro-Mechanics,CL31A226KAHNNNE,C12891
+"C3,C5,C6,C7,C15",0.1u,~,Capacitor_SMD:C_0603_1608Metric,5,Unpolarized Cap,Samsung Electro-Mechanics,CL10B104KA8NNNC,C1590
+C4,10u,~,Capacitor_SMD:C_0603_1608Metric,1,Unpolarized Cap,Samsung Electro-Mechanics,CL10A106MQ8NNNC,C1691
+"C8,C9,C10,C11,C12,C13",.33u,~,Capacitor_SMD:C_0603_1608Metric,6,Unpolarized Cap,FH (Guangdong Fenghua Advanced Tech),0603B334K250NT,C1615
+C14,4.7u,~,Capacitor_SMD:C_0603_1608Metric,1,Unpolarized Cap,Samsung Electro-Mechanics,CL10A475KQ8NNNC,C8032
+"C16,C17,C18",18n,~,Capacitor_SMD:C_0603_1608Metric,3,Unpolarized Cap,YAGEO,CC0603JRX7R9BB183,C519551
+D1,1N4007,~,Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal,1,Diode,Changzhou Starsea Elec,1N4007,C84641
+D2,LED,~,LED_SMD:LED_0603_1608Metric,1,LED,BrtLed(Bright LED Elec),BL-HZ336G-L8-TRB,C189306
+J1,Barrel_Jack BC,~,BarrelJack_Kycon_KLDX-0202-xC_Horizontal,1,2.5mm Power Jack,"Kycon, Inc.",KLDX-0202-B,C19842597
+J2,Conn_01x04_Socket,~,Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical_SMD_Pin1Left,1,4 Pin Female Header,Yxcon,F136-1104S3CMUB2,C20071191
+"J3,J5,J6",54-00178,,TENSILITY_54-00178,3,3.5mm Audio Jack,Tensility International Corporation,54-00178,C19857278
+"J4,J7",Conn_01x03_Socket,~,Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Horizontal,2,3 Pin Male Header,Yxcon,P125-1103A0BR138A1,C19190476
+L1,2.2uH,~,Inductor_SMD:L_0603_1608Metric,1,Inductor,Chilisin Elec,CPY160808T-2R2M-NP,C365953
+"R1,R3",100k,~,Resistor_SMD:R_0603_1608Metric,2,Resistor,YAGEO,RC0603FR-07100KL,C14675
+"R2,R19,R20,R21",1k,~,Resistor_SMD:R_0603_1608Metric,4,Resistor,YAGEO,RC0603JR-071KL,C14676
+R4,4.7k,~,Resistor_SMD:R_0603_1608Metric,1,Resistor,YAGEO,RC0603FR-074K7L,C99782
+"R5,R6,R7,R8,R9",10k,~,Resistor_SMD:R_0603_1608Metric,5,Resistor,YAGEO,RC0603FR-0710KL,C98220
+"R10,R12,R13,R15,R16,R18",100,~,Resistor_SMD:R_0603_1608Metric,6,Resistor,YAGEO,AC0603FR-07100RL,C125923
+"R11,R14,R17",12,~,Resistor_SMD:R_0603_1608Metric,3,Resistor,YAGEO,RC0603FR-0712RL,C245909
+U1,TPS62162DSG,http://www.ti.com/lit/ds/symlink/tps62160.pdf,SON50P200X200X80-9N,1,1-A Step-Down DC/DC Converter 3.3V,Microchip Tech,ATM90E32AS-AU-R,C177153
+U2,ATM90E32AS,,QFP50P900X900X120-48N,1,Metering IC,Texas Instruments,TPS62162DSGR,C40256
+Y1,16.384MHz,~,Crystal:Crystal_HC49-4H_Vertical,1,Crystal,YXC Crystal Oscillators,X49SD16384MSD2SC,C11247
