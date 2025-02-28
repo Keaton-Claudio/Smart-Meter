@@ -1,0 +1,529 @@
+[
+    {
+        "id": "0dcb50e77638abf5",
+        "type": "tab",
+        "label": "emonesp_mqtt_import",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f5df839398171fd0",
+        "type": "debug",
+        "z": "0dcb50e77638abf5",
+        "name": "emon/emonesp",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "true",
+        "targetType": "full",
+        "x": 600,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "e6be188c4448c9d9",
+        "type": "function",
+        "z": "0dcb50e77638abf5",
+        "name": "CT1",
+        "func": "var interval = (1000*10); // minimum interval between messages (ms)\nvar now = Date.now();\nvar tokens = msg.topic.split(\"/\");\nvar topic = tokens[2];\n\nif (topic == \"CT1\") {\n    msg.measurement = topic;\n    msg.payload = [{\n        value: parseFloat(msg.payload),\n    }];\n    context.lastTime = context.lastTime || 0;\n\n    if (now-context.lastTime > interval) {\n        context.lastTime = now;\n        return msg;\n    } else {\n        return null;\n    }\n} else {\n    return null;\n}\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 280,
+        "wires": [
+            [
+                "165a3e87faa25e56"
+            ]
+        ]
+    },
+    {
+        "id": "3cb0a56670195d66",
+        "type": "function",
+        "z": "0dcb50e77638abf5",
+        "name": "CT2",
+        "func": "var interval = (1000*10); // minimum interval between messages (ms)\nvar now = Date.now();\nvar tokens = msg.topic.split(\"/\");\nvar topic = tokens[2];\n\nif (topic == \"CT2\") {\n    msg.measurement = topic;\n    msg.payload = [{\n        value: parseFloat(msg.payload),\n    }];\n    context.lastTime = context.lastTime || 0;\n\n    if (now-context.lastTime > interval) {\n        context.lastTime = now;\n        return msg;\n    } else {\n        return null;\n    }\n} else {\n    return null;\n}\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 410,
+        "y": 320,
+        "wires": [
+            [
+                "e1d5ea02f78e599d"
+            ]
+        ]
+    },
+    {
+        "id": "0e6553158b6ddefa",
+        "type": "function",
+        "z": "0dcb50e77638abf5",
+        "name": "W",
+        "func": "var interval = (1000*10); // minimum interval between messages (ms)\nvar now = Date.now();\nvar tokens = msg.topic.split(\"/\");\nvar topic = tokens[2];\n\nif (topic == \"W\") {\n    msg.measurement = topic;\n    msg.payload = [{\n        value: parseFloat(msg.payload),\n    }];\n    context.lastTime = context.lastTime || 0;\n\n    if (now-context.lastTime > interval) {\n        context.lastTime = now;\n        return msg;\n    } else {\n        return null;\n    }\n} else {\n    return null;\n}\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 400,
+        "wires": [
+            [
+                "1e70fad5ca307280",
+                "f5df839398171fd0"
+            ]
+        ]
+    },
+    {
+        "id": "61701961a18201e8",
+        "type": "function",
+        "z": "0dcb50e77638abf5",
+        "name": "PF",
+        "func": "var interval = (1000*10); // minimum interval between messages (ms)\nvar now = Date.now();\nvar tokens = msg.topic.split(\"/\");\nvar topic = tokens[2];\n\nif (topic == \"PF\") {\n    msg.measurement = topic;\n    msg.payload = [{\n        value: parseFloat(msg.payload),\n    }];\n    context.lastTime = context.lastTime || 0;\n\n    if (now-context.lastTime > interval) {\n        context.lastTime = now;\n        return msg;\n    } else {\n        return null;\n    }\n} else {\n    return null;\n}\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 440,
+        "wires": [
+            [
+                "a2f172699945642a"
+            ]
+        ]
+    },
+    {
+        "id": "93916a74d380860d",
+        "type": "function",
+        "z": "0dcb50e77638abf5",
+        "name": "freq",
+        "func": "var interval = (1000*10); // minimum interval between messages (ms)\nvar now = Date.now();\nvar tokens = msg.topic.split(\"/\");\nvar topic = tokens[2];\n\nif (topic == \"freq\") {\n    msg.measurement = topic;\n    msg.payload = [{\n        value: parseFloat(msg.payload),\n    }];\n    context.lastTime = context.lastTime || 0;\n\n    if (now-context.lastTime > interval) {\n        context.lastTime = now;\n        return msg;\n    } else {\n        return null;\n    }\n} else {\n    return null;\n}\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 480,
+        "wires": [
+            [
+                "7913f0bceaa20807"
+            ]
+        ]
+    },
+    {
+        "id": "2caac43b8bee26ba",
+        "type": "function",
+        "z": "0dcb50e77638abf5",
+        "name": "V",
+        "func": "var interval = (1000*10); // minimum interval between messages (ms)\nvar now = Date.now();\nvar tokens = msg.topic.split(\"/\");\nvar topic = tokens[2];\n\nif (topic == \"V\") {\n    msg.measurement = topic;\n    msg.payload = [{\n        value: parseFloat(msg.payload),\n    }];\n    context.lastTime = context.lastTime || 0;\n\n    if (now-context.lastTime > interval) {\n        context.lastTime = now;\n        return msg;\n    } else {\n        return null;\n    }\n} else {\n    return null;\n}\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 240,
+        "wires": [
+            [
+                "ca3abf7778938e88"
+            ]
+        ]
+    },
+    {
+        "id": "dc72952a147973b8",
+        "type": "function",
+        "z": "0dcb50e77638abf5",
+        "name": "temp",
+        "func": "var interval = (1000*10); // minimum interval between messages (ms)\nvar now = Date.now();\nvar tokens = msg.topic.split(\"/\");\nvar topic = tokens[2];\n\nif (topic == \"temp\") {\n    msg.measurement = topic;\n    msg.payload = [{\n        value: parseFloat(msg.payload),\n    }];\n    context.lastTime = context.lastTime || 0;\n\n    if (now-context.lastTime > interval) {\n        context.lastTime = now;\n        return msg;\n    } else {\n        return null;\n    }\n} else {\n    return null;\n}\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 520,
+        "wires": [
+            [
+                "6f7610cd02d00ecc"
+            ]
+        ]
+    },
+    {
+        "id": "ca3abf7778938e88",
+        "type": "influxdb out",
+        "z": "0dcb50e77638abf5",
+        "influxdb": "7faca68a.77acb8",
+        "name": "totV to Influxdb",
+        "measurement": "totV",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "University of Memphis",
+        "bucket": "Emon",
+        "x": 600,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "165a3e87faa25e56",
+        "type": "influxdb out",
+        "z": "0dcb50e77638abf5",
+        "influxdb": "7faca68a.77acb8",
+        "name": "CT1 to Influxdb",
+        "measurement": "CT1",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "University of Memphis",
+        "bucket": "Emon",
+        "x": 600,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "e1d5ea02f78e599d",
+        "type": "influxdb out",
+        "z": "0dcb50e77638abf5",
+        "influxdb": "7faca68a.77acb8",
+        "name": "CT2 to Influxdb",
+        "measurement": "CT2",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "University of Memphis",
+        "bucket": "Emon",
+        "x": 600,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "1e70fad5ca307280",
+        "type": "influxdb out",
+        "z": "0dcb50e77638abf5",
+        "influxdb": "7faca68a.77acb8",
+        "name": "W to Influxdb",
+        "measurement": "W",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "University of Memphis",
+        "bucket": "Emon",
+        "x": 590,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "a2f172699945642a",
+        "type": "influxdb out",
+        "z": "0dcb50e77638abf5",
+        "influxdb": "7faca68a.77acb8",
+        "name": "PF to Influxdb",
+        "measurement": "PF",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "University of Memphis",
+        "bucket": "Emon",
+        "x": 600,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "7913f0bceaa20807",
+        "type": "influxdb out",
+        "z": "0dcb50e77638abf5",
+        "influxdb": "7faca68a.77acb8",
+        "name": "freq to Influxdb",
+        "measurement": "freq",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "University of Memphis",
+        "bucket": "Emon",
+        "x": 600,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "6f7610cd02d00ecc",
+        "type": "influxdb out",
+        "z": "0dcb50e77638abf5",
+        "influxdb": "7faca68a.77acb8",
+        "name": "temp to Influxdb",
+        "measurement": "temp",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "University of Memphis",
+        "bucket": "Emon",
+        "x": 600,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "4b5a3eb828124dab",
+        "type": "function",
+        "z": "0dcb50e77638abf5",
+        "name": "CT3",
+        "func": "var interval = (1000*10); // minimum interval between messages (ms)\nvar now = Date.now();\nvar tokens = msg.topic.split(\"/\");\nvar topic = tokens[2];\n\nif (topic == \"CT3\") {\n    msg.measurement = topic;\n    msg.payload = [{\n        value: parseFloat(msg.payload),\n    }];\n    context.lastTime = context.lastTime || 0;\n\n    if (now-context.lastTime > interval) {\n        context.lastTime = now;\n        return msg;\n    } else {\n        return null;\n    }\n} else {\n    return null;\n}\n\n",
+        "outputs": 1,
+        "timeout": "",
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 360,
+        "wires": [
+            [
+                "e9392f2331066a38"
+            ]
+        ]
+    },
+    {
+        "id": "e9392f2331066a38",
+        "type": "influxdb out",
+        "z": "0dcb50e77638abf5",
+        "influxdb": "7faca68a.77acb8",
+        "name": "CT3 to Influxdb",
+        "measurement": "CT3",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "University of Memphis",
+        "bucket": "Emon",
+        "x": 600,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "2715dac1be4f12eb",
+        "type": "mqtt in",
+        "z": "0dcb50e77638abf5",
+        "name": "Voltage",
+        "topic": "emon/V",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "892770d7.d31ca",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 230,
+        "y": 240,
+        "wires": [
+            [
+                "2caac43b8bee26ba"
+            ]
+        ]
+    },
+    {
+        "id": "39c2a3c025205261",
+        "type": "mqtt in",
+        "z": "0dcb50e77638abf5",
+        "name": "Current1",
+        "topic": "emon/CT1",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "892770d7.d31ca",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 240,
+        "y": 280,
+        "wires": [
+            [
+                "e6be188c4448c9d9"
+            ]
+        ]
+    },
+    {
+        "id": "b6aaed524cc2938c",
+        "type": "mqtt in",
+        "z": "0dcb50e77638abf5",
+        "name": "Current2",
+        "topic": "emon/CT2",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "892770d7.d31ca",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 240,
+        "y": 320,
+        "wires": [
+            [
+                "3cb0a56670195d66"
+            ]
+        ]
+    },
+    {
+        "id": "35f0b801eb50d8d2",
+        "type": "mqtt in",
+        "z": "0dcb50e77638abf5",
+        "name": "Current3",
+        "topic": "emon/CT3",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "892770d7.d31ca",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 240,
+        "y": 360,
+        "wires": [
+            [
+                "4b5a3eb828124dab"
+            ]
+        ]
+    },
+    {
+        "id": "60c324e5515d04cc",
+        "type": "mqtt in",
+        "z": "0dcb50e77638abf5",
+        "name": "Wattage",
+        "topic": "emon/W",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "892770d7.d31ca",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 240,
+        "y": 400,
+        "wires": [
+            [
+                "0e6553158b6ddefa"
+            ]
+        ]
+    },
+    {
+        "id": "51576404a318f320",
+        "type": "mqtt in",
+        "z": "0dcb50e77638abf5",
+        "name": "PowerFactor",
+        "topic": "emon/PF",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "892770d7.d31ca",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 250,
+        "y": 440,
+        "wires": [
+            [
+                "61701961a18201e8"
+            ]
+        ]
+    },
+    {
+        "id": "abacfa0fb76ce063",
+        "type": "mqtt in",
+        "z": "0dcb50e77638abf5",
+        "name": "Frequency",
+        "topic": "emon/freq",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "892770d7.d31ca",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 240,
+        "y": 480,
+        "wires": [
+            [
+                "93916a74d380860d"
+            ]
+        ]
+    },
+    {
+        "id": "a81d508ec0270f7c",
+        "type": "mqtt in",
+        "z": "0dcb50e77638abf5",
+        "name": "Temperature",
+        "topic": "emon/temp",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "892770d7.d31ca",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 250,
+        "y": 520,
+        "wires": [
+            [
+                "dc72952a147973b8"
+            ]
+        ]
+    },
+    {
+        "id": "7faca68a.77acb8",
+        "type": "influxdb",
+        "hostname": "localhost",
+        "port": "8086",
+        "protocol": "http",
+        "database": "Emon",
+        "name": "Emon",
+        "usetls": true,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://localhost:8086/orgs/c20d48569f6af01f",
+        "timeout": "60",
+        "rejectUnauthorized": false
+    },
+    {
+        "id": "892770d7.d31ca",
+        "type": "mqtt-broker",
+        "name": "MQTT-local",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "compatmode": false,
+        "protocolVersion": 4,
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]
