@@ -1,0 +1,154 @@
+[
+    {
+        "id": "0dcb50e77638abf5",
+        "type": "tab",
+        "label": "emonesp_mqtt_import",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ca3abf7778938e88",
+        "type": "influxdb out",
+        "z": "0dcb50e77638abf5",
+        "influxdb": "7faca68a.77acb8",
+        "name": "Export to Influxdb",
+        "measurement": "Power_Data",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "",
+        "retentionPolicyV18Flux": "",
+        "org": "University of Memphis",
+        "bucket": "Emon",
+        "x": 870,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "3bcc1c720231fc2b",
+        "type": "tcp in",
+        "z": "0dcb50e77638abf5",
+        "name": "",
+        "server": "server",
+        "host": "",
+        "port": "1880",
+        "datamode": "stream",
+        "datatype": "utf8",
+        "newline": "",
+        "topic": "",
+        "trim": false,
+        "base64": false,
+        "tls": "",
+        "x": 260,
+        "y": 380,
+        "wires": [
+            [
+                "408365ac26888ea7",
+                "de4a5ecb53699c4e"
+            ]
+        ]
+    },
+    {
+        "id": "408365ac26888ea7",
+        "type": "json",
+        "z": "0dcb50e77638abf5",
+        "name": "JSParser",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 460,
+        "y": 380,
+        "wires": [
+            [
+                "933ec979fb8a04d0",
+                "aa494ba4d271a591"
+            ]
+        ]
+    },
+    {
+        "id": "de4a5ecb53699c4e",
+        "type": "debug",
+        "z": "0dcb50e77638abf5",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 260,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "933ec979fb8a04d0",
+        "type": "function",
+        "z": "0dcb50e77638abf5",
+        "name": "Formatter",
+        "func": "msg.payload = {\n    fields: {\n        voltage: parseFloat(msg.payload.voltage),\n        currentA: parseFloat(msg.payload.currentA),\n        currentB: parseFloat(msg.payload.currentB),\n        currentC: parseFloat(msg.payload.currentC),\n        freq: parseFloat(msg.payload.freq),\n        totalCurrent: parseFloat(msg.payload.totalCurrent),\n        totalWatts: parseFloat(msg.payload.totalWatts),\n        wattsA: parseFloat(msg.payload.wattsA),\n        wattsB: parseFloat(msg.payload.wattsB),\n        wattsC: parseFloat(msg.payload.wattsC),\n        powerfactorA: parseInt(msg.payload.powerfactorA),\n        powerfactorB: parseInt(msg.payload.powerfactorB),\n        powerfactorC: parseInt(msg.payload.powerfactorC),\n        powerfactortot: parseInt(msg.payload.powerfactortot),\n        temp: parseFloat(msg.payload.temp)\n    }\n};\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 660,
+        "y": 380,
+        "wires": [
+            [
+                "ca3abf7778938e88",
+                "f48a0c0d693aae81"
+            ]
+        ]
+    },
+    {
+        "id": "aa494ba4d271a591",
+        "type": "debug",
+        "z": "0dcb50e77638abf5",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 460,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "f48a0c0d693aae81",
+        "type": "debug",
+        "z": "0dcb50e77638abf5",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "7faca68a.77acb8",
+        "type": "influxdb",
+        "hostname": "localhost",
+        "port": "8086",
+        "protocol": "http",
+        "database": "Emon",
+        "name": "Emon",
+        "usetls": true,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://localhost:8086/orgs/c20d48569f6af01f",
+        "timeout": "60",
+        "rejectUnauthorized": false
+    }
+]
